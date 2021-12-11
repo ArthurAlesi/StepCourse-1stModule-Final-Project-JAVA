@@ -11,14 +11,11 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		// System.out.println("hello world");
-
 		Jogo jogo = new Jogo();
 	}
 
 }
-
 
 class Jogo {
 	private List<Palavra> palavraLista = new ArrayList();
@@ -54,7 +51,7 @@ class Jogo {
 		char letraJogada;
 		Scanner sc = new Scanner(System.in);
 
-// imprimePalavraAdivinhando(); // <<<<<<<<<<<<<<<<<<<
+
 		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=--=");
 		while (chance > 0 && ganhou == false) {
 			System.out.println("Voce possui " + chance + " chances");
@@ -63,24 +60,7 @@ class Jogo {
 			imprimePalavraDaLista(1);
 			System.out.println("\ndiga a letra");
 			letraJogada = sc.next().charAt(0);
-// for(int i = 0; i < getTamanhoPalavra( this); i++) {
-// CONTINUAR A PARTIR DAQUI
 
-// char char0 = getCaracter(0,i);
-// char char1 = getCaracter(1,i);
-
-//	System.out.println("char 0 é " + char0);
-//	System.out.println("char 1 é " + char1);
-
-// }
-
-//	for(int i = 0; i< palavraLista.get(0).letraLista.size(); i++) {
-//	System.out.print(getCaracter(0,i) + " ");
-//	}
-
-//	for(int i = 0; i< palavraLista.get(0).letraLista.size(); i++) {
-//	System.out.print(getCaracter(1,i) + " ");
-//	}
 			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=--=");
 			setLetraJogada(letraJogada);
 			diminuiChance(letraJogada);
@@ -93,23 +73,19 @@ class Jogo {
 			fimJogo();
 		}
 		sc.close();
-
 	}
 
 	private int getTamanhoPalavra(Jogo j) {
 		return j.palavraLista.get(1).letraLista.size();
-
 	}
 
 	private char getCaracter(int i, int nu2) {
 		return palavraLista.get(i).letraLista.get(nu2).getLetra();
-
 	}
 
 	private void defineVitoria() {
 		if (ganhou) {
 			System.out.println("Voce ganhou");
-
 		} else
 			System.out.println("Voce perdeu");
 	}
@@ -174,14 +150,10 @@ class Jogo {
 			BufferedReader lerArq = new BufferedReader(arq);
 			for (int i = 1; i <= nu; i++) {
 				pal = lerArq.readLine();
-// System.out.println(pal); // <<<<<<<<<<<<<<<<
 			}
-
 			arq.close();
 		} catch (IOException e) {
-
 		} finally {
-
 		}
 		return pal;
 	}
@@ -189,19 +161,15 @@ class Jogo {
 	private int sortearNumero() {
 		Random gerador = new Random();
 		int n = (gerador.nextInt(108) + 1);
-// System.out.println(n); // <<<<<<<<<<<<<<<<
 		return setNumero(n);
 	}
 
+	
 	private int setNumero(int nambar) {
 		return nambar;
 	}
 
 	private void imprimePalavraDaLista(int n) {
-//for (int i = 0; i < palavraLista.get(1).letraLista.size(); i++) {
-//	System.out.print(getCaracter(1, i) + " ");
-//}
-
 		for (Letra l : getPalavra(n).letraLista) {
 			System.out.print(l.getLetra() + " ");
 		}
@@ -219,16 +187,16 @@ class Palavra {
 	void addLetra(char c) {
 		letraLista.add(new Letra(c));
 	}
-
 }
+
 
 class PalavraSorteada extends Palavra {
 	PalavraSorteada(String s) {
 		for (int i = 0; i < s.length(); i++)
 			this.addLetra(s.charAt(i));
-
 	}
 }
+
 
 class PalavraManipulada extends Palavra {
 	PalavraManipulada(String s) {
@@ -236,6 +204,7 @@ class PalavraManipulada extends Palavra {
 			this.addLetra('_');
 	}
 }
+
 
 class PalavraErrada extends Palavra {
 
@@ -246,23 +215,20 @@ class PalavraErrada extends Palavra {
 	PalavraErrada(char c) {
 		this.addLetra(c);
 	}
-
 }
+
 
 class Letra {
 	private char letra;
 
-//
 	Letra(char c) {
 		setLetra(c);
 	}
 
-//
 	char getLetra() {
 		return this.letra;
 	}
 
-//
 	void setLetra(char let) {
 		this.letra = let;
 	}
